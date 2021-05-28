@@ -86,8 +86,8 @@
 
                         <?php } ?>
 
-                        <a href="?step=4&count=<?= $_GET['result'] ?>&tel=<?= substr($_GET['tel'], 0, -1) ?>" role="button" class="btn btn-warning">Correction</a>
-                        <a href="?step=4&count=<?= $_GET['result'] ?>&tel=" role="button" class="btn btn-success">Réinitialisation</a>
+                        <a href="?step=4&result=<?= $_GET['result'] ?>&tel=<?= substr($_GET['tel'], 0, -1) ?>" role="button" class="btn btn-warning">Correction</a>
+                        <a href="?step=4&result=<?= $_GET['result'] ?>&tel=" role="button" class="btn btn-success">Réinitialisation</a>
                     </div>
                 </div>
 
