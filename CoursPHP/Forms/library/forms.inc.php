@@ -24,7 +24,7 @@ function calculRate(string $score, string $yes, string $no, int $size): string
     return $rate;
 }
 
-function checkForm(array $post, string $field, int $min, int $max): string
+/*function checkForm(array $post, string $field, int $min, int $max): string
 {
     $messageError = [];
 
@@ -46,4 +46,4 @@ function checkForm(array $post, string $field, int $min, int $max): string
     }
 
     return $messageError;
-}
+}*/
