@@ -43,7 +43,7 @@ try {
                             AND "' . $postid . '" = wp_posts.ID';
     */
 
-    $query = 'SELECT post_title, post_content, post_date, display_name
+    $query = 'SELECT post_title, post_content, post_date, display_name, comment_count
                         FROM wp_posts 
                         INNER JOIN wp_users ON post_author = wp_users.ID
                         WHERE wp_posts.ID = ' . $_GET["id"];
@@ -78,7 +78,7 @@ try {
 
         <h1><a href="sql.php">Blog</a>: Meet, Show, Exchange... > Article: <?= $row["post_title"] ?></h1>
         <p><?= $row["post_content"] ?></p>
-        <p>Written by: <?= $row["display_name"] ?> - Date : <?= $row["post_date"] ?></p>
+        <p>Written by: <?= $row["display_name"] ?> - Date : <?= $row["post_date"] ?> - Number of comments: <?= $row["comment_count"] ?></p>
         <h3><a href="category.php?id=...">Future link to the category of this article</a></h3>
     </body>
 

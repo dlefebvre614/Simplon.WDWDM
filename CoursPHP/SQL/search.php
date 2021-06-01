@@ -1,15 +1,10 @@
 <?PHP // always registered in the first line, first columns
 
-// API Originale : <php class="net">
-// <manual>
-// <fr>
-// <book_mysql class="php"></book_mysql>
-// <book_mysql class="php"></book_mysqli>
-// <book_mysql class="php"></book_pdo>
-
-// https://www.php.net/manual/fr/book.pdo.php
-
-// $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
+// var_dump($_GET);
+if (!isset($_GET["s"]) || $_GET["s"] === "") {
+    // die("necessary parameter");
+    header("location: sql.php");
+}
 
 // Database connection parameters.
 $hostname = 'localhost';
@@ -39,30 +34,17 @@ try {
     die();
 }
 
-// Examples of retrieving data in the database
-/* $tab = $dbh->query('SELECT * from wp_posts'); */
-
-/* $tab = $dbh->query('SELECT post_title, LEFT(post_contest, 100), post_date from wp_posts'); */
-
-/* $tab = $dbh->query('SELECT post_title, LEFT(post_content, 100), post_date, display_name
-                        FROM wp_posts, wp_users
-                        WHERE post_type = "post"
-                            AND post_status = "publish"
-                            AND post_author = wp_users.ID'); // Jointure */
-
 try {
-    // $query = 'SELECT post_title, LEFT(post_content, 100) AS post_content_tr, post_date, display_name
-    // $query = 'SELECT wp_posts.ID AS posts_ID, post_title, post_content, post_date, display_name
-    // $query = 'SELECT wp_posts.ID AS posts_ID, post_title, LEFT(post_content, 200) AS post_content_tr, post_date, display_name
-    $query = 'SELECT wp_posts.ID AS posts_ID, post_title, post_content, post_date, display_name, comment_count
+    /* $query = 'SELECT wp_posts.ID AS posts_ID, post_type, post_status, post_title, post_content, post_date, display_name, comment_count
                         FROM wp_posts 
                         INNER JOIN wp_users ON post_author = wp_users.ID
-                        WHERE (post_type = "post" OR post_type = "page")
-                            AND post_status = "publish"
-                            -- AND post_author = wp_users.ID 
-                            ORDER BY post_date DESC'; // knuckle and sort
+                        WHERE (post_type = "post"
+                            AND post_status = "publish")
+                            AND (post_title LIKE "%' . $_GET["s"] . '%"
+                            OR post_content LIKE "%' . $_GET["s"] . '%")
+                            ORDER BY post_date DESC'; */
 
-    /* $query = 'SELECT wp_posts.ID AS posts_ID, post_type, post_status, post_title, post_content, post_date, display_name, comment_count
+    $query = 'SELECT wp_posts.ID AS posts_ID, post_type, post_status, post_title, post_content, post_date, display_name, comment_count
                             FROM wp_posts 
                             INNER JOIN wp_users ON post_author = wp_users.ID
                             WHERE (post_type = "post"
@@ -70,22 +52,20 @@ try {
                                 AND (post_title LIKE :s
                                 OR post_content LIKE :s)
                                 ORDER BY post_date DESC';
-                                /*
+
+    //die($query);
+    /*
+                            SELECT wp_posts.ID AS posts_ID, post_title, post_content, post_date, display_name
+                        FROM wp_posts 
+                        INNER JOIN wp_users ON post_author = wp_users.ID
+                        WHERE post_type = "post"
+                            AND post_status = "publish"
+                            -- AND post_author = wp_users.ID
+                            AND post_title LIKE "%atelier%"
+                            ORDER BY post_date DESC
+                            */
 
     // FROM wp_posts, wp_users
-    // s%") or (2=2) or (post_title like "%s // !!!!!! injection SQL
-
-    // <?php
-    /* Exécute une requête préparée en associant des variables PHP
-$calories = 150;
-$couleur = 'rouge';
-$sth = $dbh->prepare('SELECT nom, couleur, calories
-    FROM fruit
-    WHERE calories < :calories AND couleur = :couleur');
-$sth->bindValue(':calories', $calories, PDO::PARAM_INT);
-$sth->bindValue(':couleur', $couleur, PDO::PARAM_STR);
-$sth->execute();
-?> */
 
     // AND post_author = wp_users.ID 
     // replace by
@@ -94,13 +74,12 @@ $sth->execute();
     // INNER JOIN B ON A.key = B.key
 
     //In-memory data processing
-    $req = $dbh->query($query);
-
-    /* $req = $dbh->prepare($query);
-    $req->bindValue(':s', "%" . $_GET['s'] . "%", PDO::PARAM_STR);
+    //$req = $dbh->query($query);
+    $req = $dbh->prepare($query);
+    $req->bindValue(':s', "%" . $_GET["s"] . "%", PDO::PARAM_STR);
     $req->execute();
-    $req->setFetchMode(PDO::FETCH_ASSOC); */
 
+    $req->setFetchMode(PDO::FETCH_ASSOC);
     $tab = $req->fetchAll();
     $req->closeCursor();
     // var_dump($tab);
@@ -128,9 +107,7 @@ $sth->execute();
             <input type="submit" value="Send">
         </form>
 
-
-
-        <h1>Blog: Meet, Show, Exchange...</h1>
+        <h1><a href="sql.php">Blog</a>: Meet, Show, Exchange... > Search Result for: <?= $_GET['s'] ?></h1>
         <?PHP foreach ($tab as $row) { ?></a>
             <h2><a href="article.php?id=<?= $row["posts_ID"] ?>">Article</a>: <?= $row["post_title"] ?></h2>
             <p><?= $row["post_content"] ?></p>
