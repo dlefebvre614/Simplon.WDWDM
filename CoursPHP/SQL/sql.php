@@ -1,4 +1,4 @@
-<?PHP
+<?PHP // always registered in the first line, first columns
 
 // API Originale : <php class="net">
 // <manual>
@@ -79,11 +79,13 @@ try {
     </head>
 
     <body>
-        <h1>Blog: Bring together, Show, Exchange...</h1>
+        <h1>Blog: Meet, Show, Exchange...</h1>
         <?PHP foreach ($tab as $row) { ?></a>
+            <!--<h2><a href="article.php?id=<?= $row["posts_ID"] ?>">Article</a>: <?= $row["post_title"] ?></h2>-->
             <h2><a href="article.php?id=<?= $row["posts_ID"] ?>">Article</a>: <?= $row["post_title"] ?></h2>
             <p><?= $row["post_content"] ?></p>
             <p>Written by: <?= $row["display_name"] ?> - Date : <?= $row["post_date"] ?></p>
+            <h3><a href="article.php?id=<?= $row["posts_ID"] ?>">Read more...</a></h3>
             <h3><a href="category.php?id=...">Future link to the category of this article</a></h3>
         <?PHP } ?>
     </body>
@@ -111,4 +113,5 @@ try {
     print "Erreur !: " . $e->getMessage() . "<br/>";
     die();
 }
+// do not put this tag
 ?>

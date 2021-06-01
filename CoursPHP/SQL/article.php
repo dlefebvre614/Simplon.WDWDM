@@ -1,5 +1,11 @@
 <?PHP
 
+// var_dump($_GET);
+// $postid = $_GET["id"];
+if (!isset($_GET["id"]) || $_GET["id"] === "") {
+    // die("necessary parameter");
+    header("location: sql.php");
+}
 // Database connection parameters.
 $hostname = 'localhost';
 $user = "root";
@@ -25,19 +31,27 @@ try {
     die();
 }
 
-// var_dump($_GET);
-$postid = $_GET["id"];
+
 
 // Retrieving data in the database
 try {
-    $query = 'SELECT wp_posts.ID AS post_ID, post_title, post_content, post_date, display_name
+    /* $query = 'SELECT wp_posts.ID AS post_ID, post_title, post_content, post_date, display_name
                         FROM wp_posts, wp_users
                         WHERE post_type = "post" 
                             AND post_status = "publish"
                             AND post_author = wp_users.ID
                             AND "' . $postid . '" = wp_posts.ID';
+    */
 
-    //In-memory data processing
+    $query = 'SELECT post_title, post_content, post_date, display_name
+                        FROM wp_posts, wp_users
+                        WHERE post_author = wp_users.ID
+                            AND wp_posts.ID = ' . $_GET["id"];
+    //  AND wp_posts.ID = "' . $postid . '"'; non-util quotation mark for an integer
+
+    // In-memory data processing
+    // die($query); // Stop point
+
     $req = $dbh->query($query);
     $req->setFetchMode(PDO::FETCH_ASSOC);
     $row = $req->fetch();
@@ -45,7 +59,6 @@ try {
     //var_dump($tab);
     //var_dump($row);
     //die();
-
 
     // Creating the blog: Html
 ?>
@@ -60,8 +73,9 @@ try {
     </head>
 
     <body>
-        <h1><a href="sql.php">Blog</a>: Bring together, Show, Exchange...</h1>
-        <h2><?= $row["post_title"] ?></h2>
+        <!--<h1><a href="sql.php">Blog</a>: Bring together, Show, Exchange...</h1>-->
+
+        <h1><a href="sql.php">Blog</a>: Meet, Show, Exchange... > Article: <?= $row["post_title"] ?></h1>
         <p><?= $row["post_content"] ?></p>
         <p>Written by: <?= $row["display_name"] ?> - Date : <?= $row["post_date"] ?></p>
         <h3><a href="category.php?id=...">Future link to the category of this article</a></h3>
