@@ -1,6 +1,6 @@
 <?PHP
 
-// var_dump($_GET);
+var_dump($_GET);
 $categoryid = $_GET["id"];
 
 // Database connection parameters.
