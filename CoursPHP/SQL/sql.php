@@ -79,9 +79,9 @@ try {
     </head>
 
     <body>
-        <h1>Blog: Bring together Show Exchange...</h1>
+        <h1>Blog: Bring together, Show, Exchange...</h1>
         <?PHP foreach ($tab as $row) { ?></a>
-            <h2><a href="article.php?id=<?= $row["posts_ID"] ?>"><?= $row["post_title"] ?><a></h2>
+            <h2><a href="article.php?id=<?= $row["posts_ID"] ?>">Article</a>: <?= $row["post_title"] ?></h2>
             <p><?= $row["post_content"] ?></p>
             <p>Written by: <?= $row["display_name"] ?> - Date : <?= $row["post_date"] ?></p>
             <h3><a href="category.php?id=...">Future link to the category of this article</a></h3>
