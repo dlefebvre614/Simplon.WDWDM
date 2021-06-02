@@ -135,7 +135,7 @@ try {
 								<a href="post.html"><img src="https://picsum.photos/750/500?random=<?= $row["posts_ID"] ?>" alt=""></a>
 							</div>
 							<div class="blog-post-body">
-								<h2><a href="article.php?id=<?= $row["posts_ID"] ?>"><?= $row["post_type"] ?></a>: <?= $row["post_title"] ?></h2>
+								<h2><a href="post.php?id=<?= $row["posts_ID"] ?>"><?= $row["post_type"] ?></a>: <?= $row["post_title"] ?></h2>
 								<div class="post-meta"><span>by <a href="#"><?= $row["display_name"] ?></a></span>/<span><i class="fa fa-clock-o"></i><?= $row["post_date"] ?></span>/<span><i class="fa fa-comment-o"></i> <a href="#"><?= $row["comment_count"] ?></a></span></div>
 								<p><?= $row["post_content"] ?></p>
 								<div class="read-more"><a href="post.php?id=<?= $row["posts_ID"] ?>">Continue Reading</a></div>
