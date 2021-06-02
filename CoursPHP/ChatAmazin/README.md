@@ -1,4 +1,4 @@
-# SimplonDWWM-Projet-Chat
+# SIMPLON.WDWDM/CoursPHP/CatAmazin
 Réaliser un chat sans identifcation
 
 15h00
