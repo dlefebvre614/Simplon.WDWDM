@@ -41,7 +41,12 @@ echo "<hr>";
 
 // Exercice 5 : Afficher un figure de 8 étoiles sur 8.
 
-// Ecrire le code ici
+for ($i = 0; $i < 8; $i++) {
+    for ($j = 0; $j < 8; $j++) {
+        echo '⭐';
+    }
+    echo '<br>';
+}
 
 echo "<hr>";
 
