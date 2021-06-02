@@ -5,7 +5,11 @@
 $a = 10;
 $b = 20;
 
-// Ecrire le code ici
+if ($a < $b) {
+    echo $a . ' est plus petit que ' . $b;
+} else {
+    echo $b . ' est plus petit que ' . $a;
+}
 
 echo "<hr>";
 
