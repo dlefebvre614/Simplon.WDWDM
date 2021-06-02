@@ -30,9 +30,12 @@ for ($i = 10; $i > -1; $i--) {
 
 echo "<hr>";
 
-// Exercice 4 : Ecrire une boucle qui produit une ligne horizontale de 8 étoiles
+// Exercice 4 : Ecrire une boucle qui produit une ligne horizontale de 8 étoiles ⭐
 
-// Ecrire le code ici
+for ($i = 0; $i < 8; $i++) {
+    echo '⭐';
+}
+echo '<br>';
 
 echo "<hr>";
 
