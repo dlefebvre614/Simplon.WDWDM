@@ -54,7 +54,15 @@ echo "<hr>";
 // indice : si $mot = "jouet" alors $mot[0] = "j", $mot[1] = "o", ... 
 // indice : chercher sur google une fonction qui renvoie la longueur d'une chaine de caractères
 
-// Ecrire le code ici
+$Sentence = "C'est une phrase";
+$replace = "_";
+
+funct($replace) {
+// a développer
+
+
+
+}
 
 // trouver sur google son équivalant clef en main.
 echo "<hr>";
