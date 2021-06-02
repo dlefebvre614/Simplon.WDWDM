@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- meta référencement -->
     <meta name="description" content="Web Dev PHP : Conditions, requêtes GET">
-    <meta name="author" content="Camile Ghastine">
+    <meta name="author" content="Didier LEFEBVRE">
 
     <title>Questionnaire de satisfaction du service client Amazin</title>
 

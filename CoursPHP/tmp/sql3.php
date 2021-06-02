@@ -1,7 +1,15 @@
-<?PHP
+<?PHP // always registered in the first line, first columns
 
-// var_dump($_GET);
-$categoryid = $_GET["id"];
+// API Originale : <php class="net">
+// <manual>
+// <fr>
+// <book_mysql class="php"></book_mysql>
+// <book_mysql class="php"></book_mysqli>
+// <book_mysql class="php"></book_pdo>
+
+// https://www.php.net/manual/fr/book.pdo.php
+
+// $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
 
 // Database connection parameters.
 $hostname = 'localhost';
@@ -9,6 +17,8 @@ $user = "root";
 $pass = "";
 $dbname = "wordpress_3";
 $table = "";
+
+// $dbh = new PDO('mysql:host=' . $hostname . ';dbname=' . $dbname, $user, $pass);
 $dsn = 'mysql:host=' . $hostname . ';dbname=' . $dbname;
 // echo $dsn;
 
@@ -29,14 +39,36 @@ try {
     die();
 }
 
-try {
-    // $query = SELECT
-    $query = 'SELECT wp_posts.ID AS posts_ID, post_title, post_content, post_date, display_name
+// Examples of retrieving data in the database
+/* $tab = $dbh->query('SELECT * from wp_posts'); */
+
+/* $tab = $dbh->query('SELECT post_title, LEFT(post_contest, 100), post_date from wp_posts'); */
+
+/* $tab = $dbh->query('SELECT post_title, LEFT(post_content, 100), post_date, display_name
                         FROM wp_posts, wp_users
                         WHERE post_type = "post"
                             AND post_status = "publish"
-                            AND post_author = wp_users.ID 
+                            AND post_author = wp_users.ID'); // Jointure */
+
+try {
+    // $query = 'SELECT post_title, LEFT(post_content, 100) AS post_content_tr, post_date, display_name
+    // $query = 'SELECT wp_posts.ID AS posts_ID, post_title, post_content, post_date, display_name
+    // $query = 'SELECT wp_posts.ID AS posts_ID, post_title, LEFT(post_content, 200) AS post_content_tr, post_date, display_name
+    $query = 'SELECT wp_posts.ID AS posts_ID, post_title, post_content, post_date, display_name
+                        FROM wp_posts 
+                        INNER JOIN wp_users ON post_author = wp_users.ID
+                        WHERE post_type = "post"
+                            AND post_status = "publish"
+                            -- AND post_author = wp_users.ID 
                             ORDER BY post_date DESC'; // knuckle and sort
+
+    // FROM wp_posts, wp_users
+
+    // AND post_author = wp_users.ID 
+    // replace by
+    // SELECT *
+    // FROM A
+    // INNER JOIN B ON A.key = B.key
 
     //In-memory data processing
     $req = $dbh->query($query);
@@ -60,9 +92,11 @@ try {
     <body>
         <h1>Blog: Meet, Show, Exchange...</h1>
         <?PHP foreach ($tab as $row) { ?></a>
+            <!--<h2><a href="article.php?id=<?= $row["posts_ID"] ?>">Article</a>: <?= $row["post_title"] ?></h2>-->
             <h2><a href="article.php?id=<?= $row["posts_ID"] ?>">Article</a>: <?= $row["post_title"] ?></h2>
-            <p><?= $row["post_content"] ?></p>
+            <p><?= $row["post_content"] ?>
             <p>Written by: <?= $row["display_name"] ?> - Date : <?= $row["post_date"] ?></p>
+            <h3><a href="article.php?id=<?= $row["posts_ID"] ?>">Read more...</a></h3>
             <h3><a href="category.php?id=...">Future link to the category of this article</a></h3>
         <?PHP } ?>
     </body>
@@ -77,10 +111,18 @@ try {
     // freeing memory
     $dbh = null;
 
+    /*
+    foreach ($dbh->query('SELECT * from FOO') as $row) {
+        print_r($row);
+    }
+    $dbh = null;
+    */
+
     //echo "Fin du SQL !";
 
 } catch (PDOException $e) {
     print "Erreur !: " . $e->getMessage() . "<br/>";
     die();
 }
+// do not put this tag
 ?>

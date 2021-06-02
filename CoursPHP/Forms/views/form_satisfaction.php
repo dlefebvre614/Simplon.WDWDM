@@ -38,7 +38,7 @@
                     <div class="form-group has-danger">
                         <label class="Fname" for="Fname">First Name</label>
                         <input type="text" value="<?= $_POST['Fname'] ?>" class="form-control is-invalid" name="Fname" id="Fname" aria-describedby="FnameHelp" placeholder="Enter your First Name">
-                        <div class="invalid-feedback">Sorry, first name must be between 3 and 20 characters</div>
+                        <div class="invalid-feedback">Sorry, but First Name must be between 3 and 20 characters</div>
                     </div>
 
                 <?PHP
@@ -70,7 +70,7 @@
                     <div class="form-group has-danger">
                         <label class="Lname" for="Lname">Last Name</label>
                         <input type="text" value="<?= $_POST['Lname'] ?>" class="form-control is-invalid" name="Lname" id="Lname" aria-describedby="LnameHelp" placeholder="Enter your Last Name">
-                        <div class="invalid-feedback">Sorry, Last name must be between 3 and 20 characters</div>
+                        <div class="invalid-feedback">Sorry, but Last Name must be between 3 and 20 characters</div>
                     </div>
 
                 <?PHP
@@ -103,7 +103,7 @@
                     <div class="form-group has-danger">
                         <label class="Phone" for="Phone">Phone Number</label>
                         <input type="text" value="<?= $_POST['Phone'] ?>" class="form-control is-invalid" name="Phone" id="Phone" aria-describedby="PhoneHelp" placeholder="Enter your Phone Number">
-                        <div class="invalid-feedback">Sorry, the phone number must be 10 digits long</div>
+                        <div class="invalid-feedback">Sorry, but the Phone Number must be 10 digits long</div>
                     </div>
 
                 <?PHP

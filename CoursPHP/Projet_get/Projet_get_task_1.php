@@ -19,11 +19,13 @@
 			On TERMINAL  : 
 			php -S localhost:8000, ([CTRL] "c" to stop the server)
 			cd CoursPHP
-			git add Projet_$get (once)
-			git commit -m "add Projet_$get task 1"
+			git add Projet_get (once)
+			git commit -m "add Projet_get task 1"
 			git push origin main
+			git status
 
 			Verification : https://github.com/dlefebvre614/Simplon.WDWDM
+						   https://github.com/dlefebvre614/Simplon.WDWDM.git
 		-->
 
         <!-- $get_task_1 Projet's : The answer to each question shows the following answer (without addressing the answer). CGE -->
