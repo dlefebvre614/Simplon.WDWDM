@@ -15,7 +15,9 @@ echo "<hr>";
 
 // Exercice 2 : afficher la table de 9 (opération + résultat)
 
-// Ecrire le code ici
+for ($i = 0; $i < 11; $i++) {
+    echo '9 x ' . $i . ' = ' . $i * 9 . '<br>';
+}
 
 echo "<hr>";
 
