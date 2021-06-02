@@ -23,7 +23,10 @@ echo "<hr>";
 
 // Exercice 3 : compter à rebours
 
-// Ecrire le code ici
+for ($i = 10; $i > -1; $i--) {
+    echo '9 x ' . $i . ' = ' . $i * 9 . '<br>';
+}
+
 
 echo "<hr>";
 
