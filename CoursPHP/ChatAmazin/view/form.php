@@ -6,7 +6,7 @@
             <div class="form-group col-4">
                 <label for="fe_test" class="form-label mt-4" hidden>Pseudo:</label>
                 <input type="text" class="form-control" id="fe_text" aria-describedby="textHelp" placeholder="Enter your pseudo">
-                <small id="textHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <small id="textHelp" class="form-text text-muted">We'll never share your pseudo with anyone else.</small>
             </div>
 
             <!--<label for="fe_message">Message:</label>

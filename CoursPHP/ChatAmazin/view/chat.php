@@ -82,12 +82,12 @@
         </thead>
         <tbody>
             <?php
-            for ($i = 0; $i < 3; $i++) {
+            foreach ($data as $row) {
             ?>
                 <tr class="table-light">
-                    <td class="col-2">02/06/2021</td>
-                    <td class="col-2">didier</td>
-                    <td class="col-8">Message de didier</td>
+                    <td class="col-2"><?= $row['date'] ?></td>
+                    <td class="col-2"><?= $row['pseudo'] ?></td>
+                    <td class="col-8"><?= $row['content'] ?></td>
                 </tr>
             <?php
             }

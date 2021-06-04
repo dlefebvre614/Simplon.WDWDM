@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <?PHP
     // require('view/header.php');
     require('chat.php');
