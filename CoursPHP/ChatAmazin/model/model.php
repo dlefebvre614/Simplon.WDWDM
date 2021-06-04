@@ -161,12 +161,14 @@ function create($pseudo, $content)
 
   // here insert message in database
   try {
-    $query = $dbh->prepare('INSERT INTO message (pseudo, content) VALUES (:pseudo, :content)');
-    $query->execute([
+    $query = 'INSERT INTO message (pseudo, content) VALUES (:pseudo, :content)';
+    $req = $dbh->prepare($query);
+    $req->execute([
       'pseudo' => $pseudo,
       'content' => $content
     ]);
     // freeing memory
+    $req->closeCursor();
     $dbh = null;
   } catch (PDOException $e) {
     print "unable to create object entry from the database!" . $e->getMessage() . "<br/>";
