@@ -13,8 +13,11 @@ require('model/model.php');
 */
 
 /* if (isset($_POST['submit'])) { */
-if (isset($_POST)) {
-    create($_POST['pseudo'], $_POST['content']);
+/* if (isset($_POST)) { */
+if (isset($_POST['submit'])) {
+    if ($_POST['pseudo'] != "" && $_POST['content'] != "") {
+        create($_POST['pseudo'], $_POST['content']);
+    }
 }
 
 // Find the objects in the message table

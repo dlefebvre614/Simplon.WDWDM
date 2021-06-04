@@ -20,7 +20,7 @@
     <label for="fe_submit"></label>
     <input type="submit" value="Submit">-->
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
     </fieldset>
 
