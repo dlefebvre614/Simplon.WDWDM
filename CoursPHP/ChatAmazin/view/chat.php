@@ -86,8 +86,8 @@
             ?>
                 <tr class="table-light">
                     <td class="col-2"><?= $row['date'] ?></td>
-                    <td class="col-2"><?= $row['pseudo'] ?></td>
-                    <td class="col-8"><?= $row['content'] ?></td>
+                    <td class="col-2"><?= htmlspecialchars($row['pseudo']) ?></td>
+                    <td class="col-8"><?= nl2br(htmlspecialchars($row['content'])) ?></td>
                 </tr>
             <?php
             }

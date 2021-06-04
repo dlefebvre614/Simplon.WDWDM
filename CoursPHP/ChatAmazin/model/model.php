@@ -49,60 +49,60 @@ PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin>
 
 function getDBConnection()
 {
-    // Database connection parameters.
-    $hostname = 'localhost';
-    $user = "root";
-    $pass = "";
-    $dbname = "chat";
-    $dsn = 'mysql:host=' . $hostname . ';dbname=' . $dbname;
-    // echo $dsn;
-    // Options for processing database data
-    $options = array(
-        // case => valeur
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",  // charset
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // debug level
-    );
-    try {
-        // Open Database
-        $dbh = new PDO($dsn, $user, $pass, $options);
-        //var_dump($dbh);
-        //echo "Connected";
-        return $dbh;
-    } catch (PDOException $e) {
-        print "unable to connect to the database!" . $e->getMessage() . "<br/>";
-        die();
-    }
+  // Database connection parameters.
+  $hostname = 'localhost';
+  $user = "root";
+  $pass = "";
+  $dbname = "chat";
+  $dsn = 'mysql:host=' . $hostname . ';dbname=' . $dbname;
+  // echo $dsn;
+  // Options for processing database data
+  $options = array(
+    // case => valeur
+    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",  // charset
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // debug level
+  );
+  try {
+    // Open Database
+    $dbh = new PDO($dsn, $user, $pass, $options);
+    //var_dump($dbh);
+    //echo "Connected";
+    return $dbh;
+  } catch (PDOException $e) {
+    print "unable to connect to the database!" . $e->getMessage() . "<br/>";
+    die();
+  }
 }
 
 function findAll()
 {
 
-    $dbh = getDBConnection();
+  $dbh = getDBConnection();
 
-    try {
-        $query = 'SELECT *
+  try {
+    $query = 'SELECT *
         FROM message 
         ORDER BY date DESC
-        -- LIMIT 5
+        LIMIT 5
         ';
 
-        //In-memory data processing
-        $req = $dbh->query($query);
-        $req->setFetchMode(PDO::FETCH_ASSOC);
-        $tab = $req->fetchAll();
-        $req->closeCursor();
-        // var_dump($tab);
-        // exit;
+    //In-memory data processing
+    $req = $dbh->query($query);
+    $req->setFetchMode(PDO::FETCH_ASSOC);
+    $tab = $req->fetchAll();
+    $req->closeCursor();
+    // var_dump($tab);
+    // exit;
 
-        // freeing memory
-        $dbh = null;
+    // freeing memory
+    $dbh = null;
 
-        //echo "Fin du SQL !";
-        return $tab;
-    } catch (PDOException $e) {
-        print "unable to get objects from the database!" . $e->getMessage() . "<br/>";
-        die();
-    }
+    //echo "Fin du SQL !";
+    return $tab;
+  } catch (PDOException $e) {
+    print "unable to get objects from the database!" . $e->getMessage() . "<br/>";
+    die();
+  }
 }
 
 /* GIT actions to end the issue n° 3 and return to main
