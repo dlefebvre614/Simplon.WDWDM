@@ -111,7 +111,8 @@ PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git branch
   main
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git add .
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git commit -m "add Issue n° 3"
-PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git puch origin displayDatas
+PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git push origin displayDatas
+// I wait for the validation of the displayDatas branch by the project manager before merging and deleting it
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git checkout main
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git branch
 * main
