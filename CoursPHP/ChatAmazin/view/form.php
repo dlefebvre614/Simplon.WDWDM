@@ -1,21 +1,19 @@
-<form action="">
+<form action="index.php" method="post">
     <fieldset>
-        <!--<label for="fe_pseudo" hidden>Pseudo:</label>
-    <input type="text" name="speudo" id="fe_pseudo">-->
         <div class="row">
             <div class="form-group col-4">
-                <label for="fe_test" class="form-label mt-4" hidden>Pseudo:</label>
-                <input type="text" class="form-control" id="fe_text" aria-describedby="textHelp" placeholder="Enter your pseudo">
-                <small id="textHelp" class="form-text text-muted">We'll never share your pseudo with anyone else.</small>
+                <label for="fe_pseudo" class="form-label mt-4" hidden>Pseudo:</label>
+                <input type="text" class="form-control" name="pseudo" id="fe_pseudo" aria-describedby="textHelp" placeholder="Enter your pseudo">
+                <!--<small id="textHelp" class="form-text text-muted">We'll never share your pseudo with anyone else.</small>-->
             </div>
 
             <!--<label for="fe_message">Message:</label>
     <input type="text" name="message" id="fe_message" size=100>-->
 
             <div class="form-group col-8">
-                <!--<label for="fe_message" class="form-label mt-4" hidden>Text area:</label>-->
-                <label for="fe_message" class="form-label mt-4" hidden>Text area:</label>
-                <textarea class="form-control" name="message" id="fe_message" rows="3" placeholder="Enter your message"></textarea>
+                <label for="fe_content" class="form-label mt-4" hidden>Pseudo area:</label>
+                <textarea class="form-control" name="content" id="fe_content" rows="3" placeholder="Enter your message"></textarea>
+                <!--<small id="contentHelp" class="form-text text-muted">We'll never share your message with anyone else.</small>-->
             </div>
         </div>
         <!--<br>

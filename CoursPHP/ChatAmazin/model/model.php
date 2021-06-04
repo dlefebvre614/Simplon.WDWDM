@@ -112,7 +112,7 @@ PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git branch
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git add .
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git commit -m "add Issue n° 3"
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git push origin displayDatas
-// I wait for the validation of the displayDatas branch by the project manager before merging and deleting it
+// --> I wait for the validation of the displayDatas branch by the project manager before merging and deleting it
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git checkout main
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git branch
 * main
@@ -124,7 +124,59 @@ PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git branch
 PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin>
 
 
-Project Chat: ISSUE N° 4: Waiting for information for confirmed 
+/* ---------------------------------------------------------------------------
+the chat project : ISSUE N° 4 in french
+10h30 le 04 Juin 2021
+
+Publication d'un nouveau message
+
+1) Si cela n'a pas déjà été fait, "paramétrer" le formulaire HTML (action et method du formulaire et name pour chacun de ses champs).
+2) Récupérer les données postées dans index.php.
+3) Créer une fonction create() dans model.php.
+4) Appeler cette fonction dans index.php quand un formulaire a été posté.
 */
+
+/* GIT actions to end the issue n° 4 and return to main
+PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git branch
+* displayDatas
+  main
+PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git checkout main
+  displayDatas
+* main
+PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git branch addData
+PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git checkout addData
+PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git git branch
+* addData
+  displayDatas
+  main
+PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git add README.md
+PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git commit -m "Update README.md"
+PS C:\wamp64\www\Simplon.WDWDM\CoursPHP\ChatAmazin> git push origin addData 
+*/
+
+function create($pseudo, $content)
+{
+  // connect to database
+  $dbh = getDBConnection();
+
+  // here insert message in database
+  try {
+    $query = $dbh->prepare('INSERT INTO message (pseudo, content) VALUES (:pseudo, :content)');
+    $query->execute([
+      'pseudo' => $pseudo,
+      'content' => $content
+    ]);
+    // freeing memory
+    $dbh = null;
+  } catch (PDOException $e) {
+    print "unable to create object entry from the database!" . $e->getMessage() . "<br/>";
+    die();
+  }
+}
+
+
+
+
+
 
 // do not put the tag: end of PHP (? >)

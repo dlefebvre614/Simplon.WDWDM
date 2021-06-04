@@ -3,6 +3,14 @@
 // Get model
 require('model/model.php');
 
+// Verifying that the form is correct
+if ($_POST["pseudo"] === "" || $_POST['content'] === "") {
+    // die("necessary parameter");
+    header("location: index.php");
+} else {
+    create($_POST['pseudo'], $_POST['content']);
+}
+
 // Find the objects in the message table
 $data = findAll();
 
