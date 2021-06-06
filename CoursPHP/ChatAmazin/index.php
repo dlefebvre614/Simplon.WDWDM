@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 }
 
 // Find the objects in the message table
-$data = findAll();
+$data = array_reverse(findAll());
 
 // Display views
 require('view/default.php');

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="form-group col-4">
                 <label for="fe_pseudo" class="form-label mt-4" hidden>Pseudo:</label>
-                <input type="text" class="form-control" name="pseudo" id="fe_pseudo" aria-describedby="textHelp" placeholder="Enter your pseudo">
+                <input type="text" value="<?= isset($_POST['pseudo']) ? $_POST['pseudo'] : '' ?>" name="pseudo" id="fe_pseudo" aria-describedby="textHelp" placeholder="Enter your pseudo">
                 <!--<small id="textHelp" class="form-text text-muted">We'll never share your pseudo with anyone else.</small>-->
             </div>
 

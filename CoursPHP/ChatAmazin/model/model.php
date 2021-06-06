@@ -83,7 +83,7 @@ function findAll()
     $query = 'SELECT *
         FROM message 
         ORDER BY date DESC
-        LIMIT 5
+        LIMIT 10
         ';
 
     //In-memory data processing
@@ -176,9 +176,23 @@ function create($pseudo, $content)
   }
 }
 
+function delete(int $id): void
+{
+  // connect to database
+  $dbh = getDBConnection();
 
-
-
-
+  // here delete message in database
+  try {
+    $query = 'DELETE FROM message WHERE id = ?';
+    $req = $dbh->prepare($query);
+    $req->execute([$id]);
+    // freeing memory
+    $req->closeCursor();
+    $dbh = null;
+  } catch (PDOException $e) {
+    print "unable to delete object entry from the database!" . $e->getMessage() . "<br/>";
+    die();
+  }
+}
 
 // do not put the tag: end of PHP (? >)
