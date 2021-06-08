@@ -1,7 +1,7 @@
 <?php
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'post.home';
-
+// echo 'index';
 ob_start();
 try {
     if ($page === 'post.home') {
@@ -53,4 +53,5 @@ try {
 }
 $content = ob_get_clean();
 
+echo "ici";
 require 'base.php';
