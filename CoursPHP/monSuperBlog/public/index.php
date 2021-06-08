@@ -6,28 +6,21 @@ $path = dirname(__DIR__);
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'post.home';
 
-ob_start();
 try {
     if ($page === 'post.home') {
 
-        require $path . '/model/postRepository.php';
-        $posts = findALL();
-
-        require $path . '/view/post/home.php';
+        require $path . '/controller/postController.php';
+        home();
     } elseif ($page === 'post.show') {
 
-        require $path . '/model/postRepository.php';
-        $post = findOneById($_GET['id']);
-
-        require $path . '/view/post/show.php';
+        require $path . '/controller/postController.php';
+        show();
     } elseif ($page === 'user.connect') {
-        require $path . '/view/user/connectionForm.php';
+        require $path . '/controller/userController.php';
+        connection();
     } else {
         throw new Exception('404');
     }
 } catch (Exception $e) {
-    require $path . '/view/error/error404.php';
+    require $path . '/controller/errorController.php';
 }
-$content = ob_get_clean();
-
-require $path . '/view/base.php';
