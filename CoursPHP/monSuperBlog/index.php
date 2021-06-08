@@ -9,21 +9,21 @@ try {
         require 'model/postRepository.php';
         $posts = findALL();
 
-        require 'home.php';
+        require 'view/post/home.php';
     } elseif ($page === 'post.show') {
 
         require 'model/postRepository.php';
         $post = findOneById($_GET['id']);
 
-        require 'show.php';
+        require 'view/post/show.php';
     } elseif ($page === 'user.connect') {
-        require 'connectionForm.php';
+        require 'view/user/connectionForm.php';
     } else {
         throw new Exception('404');
     }
 } catch (Exception $e) {
-    require 'error404.php';
+    require 'view/error/error404.php';
 }
 $content = ob_get_clean();
 
-require 'base.php';
+require 'view/base.php';
