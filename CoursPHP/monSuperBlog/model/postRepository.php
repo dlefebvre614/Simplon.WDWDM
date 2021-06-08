@@ -30,7 +30,7 @@ function findOneById($id)
 {
     $dbh = getDBConnection();
 
-    $request = $dbh->query('SELECT * FROM post WHERE id=?');
+    $request = $dbh->prepare('SELECT * FROM post WHERE id=?');
     $request->execute([$id]);
     $request->setFetchMode(PDO::FETCH_ASSOC);
     $post = $request->fetch();
