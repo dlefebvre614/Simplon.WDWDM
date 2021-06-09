@@ -13,12 +13,12 @@ class book
     private string $author = "Auteur";
     private string $genre = "Genre";
     private string $description = "Description";
-    private $dateinstanciation;
+    private string $dateinstanciation;
 
     // Construct
     public function __construct()
     {
-        $this->dateinstanciation = date('d/m/Y h:i:s');
+        $this->dateinstanciation = date('d/m/Y à h:i:s');
         var_dump(date('d/m/Y h:i:s'));
     }
 
