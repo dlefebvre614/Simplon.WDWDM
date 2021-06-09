@@ -23,3 +23,12 @@ $book->setDescription('Chroniques du monde émergé (titre original : Cronache d
  */
 
 // Ecrire du code ici
+require '../Model/Entity/Book.php';
+
+$manga = new Manga();
+
+$manga->settitle('Hunter X Hunter');
+$manga->setauthor('Yoshihiro Togashi');
+$manga->setillustrateur('Yoshihiro Togashi');
+$manga->setgenre('Shōnen');
+$manga->setdescription('Gon Freecss a douze ans, et rêve de devenir hunter. Les hunters sont des aventuriers d\'élite qui peuvent être chasseurs de prime, chefs-cuisinier, archéologues, zoologues, justiciers ou consultants dans divers domaines.');
