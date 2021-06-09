@@ -13,6 +13,14 @@ class book
     private string $author = "Auteur";
     private string $genre = "Genre";
     private string $description = "Description";
+    private $dateinstanciation;
+
+    // Construct
+    public function __construct()
+    {
+        $this->dateinstanciation = date('d/m/Y h:i:s');
+        var_dump(date('d/m/Y h:i:s'));
+    }
 
     //setters
     public function setTitle(string $title)
@@ -72,5 +80,25 @@ class book
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Get the value of dateinstanciation
+     */
+    public function getDateinstanciation()
+    {
+        return $this->dateinstanciation;
+    }
+
+    /**
+     * Set the value of dateinstanciation
+     *
+     * @return  self
+     */
+    public function setDateinstanciation($dateinstanciation)
+    {
+        $this->dateinstanciation = $dateinstanciation;
+
+        return $this;
     }
 }
