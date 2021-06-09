@@ -35,7 +35,7 @@ class book
     //getters
     public function getAuthor()
     {
-        return $this->auther;
+        return $this->author;
     }
 
     //setters
