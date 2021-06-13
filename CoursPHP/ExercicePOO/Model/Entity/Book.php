@@ -9,17 +9,17 @@
 class book
 {
     //Attributs
-    private string $title = "Titre";
-    private string $author = "Auteur";
-    private string $genre = "Genre";
-    private string $description = "Description";
-    private string $dateinstanciation;
+    protected string $title = "Titre";
+    protected string $author = "Auteur";
+    protected string $genre = "Genre";
+    protected string $description = "Description";
+    protected string $dateinstanciation;
 
     // Construct
     public function __construct()
     {
         $this->dateinstanciation = date('d/m/Y à h:i:s');
-        var_dump(date('d/m/Y h:i:s'));
+        //var_dump(date('d/m/Y h:i:s'));
     }
 
     //setters
@@ -59,17 +59,17 @@ class book
     }
 
     //setters
-    public function setDesription($desription)
+    /* public function setDescription($description)
     {
-        $this->desription = $desription;
+        $this->description = $description;
     }
 
     //getters
-    public function getDesription()
+    public function getDescription()
     {
-        return $this->desription;
+        return $this->description;
     }
-
+*/
     //setters
     public function setDescription($description)
     {
@@ -81,6 +81,26 @@ class book
     {
         return $this->description;
     }
+
+    /**
+     * Get the value of dateinstanciation
+     */
+    /*public function getDateinstanciation()
+    {
+        return $this->dateinstanciation;
+    }
+
+    /**
+     * Set the value of dateinstanciation
+     *
+     * @return  self
+     */
+    /*public function setDateinstanciation($dateinstanciation)
+    {
+        $this->dateinstanciation = $dateinstanciation;
+
+        //return $this;
+    }*/
 
     /**
      * Get the value of dateinstanciation
